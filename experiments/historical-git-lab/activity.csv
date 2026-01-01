@@ -1,0 +1,110 @@
+synthetic_date,lab_note
+2015-02-07,record timezone interpretation
+2015-10-09,compare author and committer timestamps
+2015-10-09,record timezone interpretation
+2015-10-23,inspect contribution date attribution
+2016-03-07,note repository branch requirements
+2016-07-08,note inactive-period boundary
+2016-07-21,document author-date behavior
+2016-11-08,inspect contribution date attribution
+2016-11-21,note repository branch requirements
+2017-01-08,inspect contribution date attribution
+2017-01-08,note repository branch requirements
+2017-08-11,compare author and committer timestamps
+2017-08-11,record timezone interpretation
+2017-08-11,inspect contribution date attribution
+2017-08-11,note repository branch requirements
+2018-02-07,record synthetic-history experiment
+2018-05-08,note inactive-period boundary
+2018-05-21,document author-date behavior
+2018-09-08,inspect contribution date attribution
+2018-09-21,note repository branch requirements
+2018-12-08,document graph refresh behavior
+2018-12-08,compare commit display dates
+2019-01-08,record synthetic-history experiment
+2019-01-08,document graph refresh behavior
+2019-04-08,note inactive-period boundary
+2019-04-21,document author-date behavior
+2019-07-08,record timezone interpretation
+2019-07-08,inspect contribution date attribution
+2019-11-08,document graph refresh behavior
+2019-11-08,compare commit display dates
+2020-02-07,compare commit display dates
+2020-05-08,compare author and committer timestamps
+2020-05-21,record timezone interpretation
+2020-08-08,note repository branch requirements
+2020-08-08,record synthetic-history experiment
+2020-12-11,note inactive-period boundary
+2020-12-11,document author-date behavior
+2020-12-11,compare author and committer timestamps
+2020-12-11,record timezone interpretation
+2021-01-08,compare commit display dates
+2021-01-08,note inactive-period boundary
+2021-04-08,compare author and committer timestamps
+2021-04-21,record timezone interpretation
+2021-07-08,note repository branch requirements
+2021-07-08,record synthetic-history experiment
+2021-10-08,compare commit display dates
+2021-10-21,note inactive-period boundary
+2021-12-08,document author-date behavior
+2021-12-21,compare author and committer timestamps
+2022-02-07,document author-date behavior
+2022-05-09,inspect contribution date attribution
+2022-05-09,note repository branch requirements
+2022-05-23,record synthetic-history experiment
+2022-08-08,document graph refresh behavior
+2022-08-08,compare commit display dates
+2022-11-08,document author-date behavior
+2022-11-21,compare author and committer timestamps
+2022-12-08,compare author and committer timestamps
+2022-12-08,record timezone interpretation
+2023-01-08,document author-date behavior
+2023-01-08,compare author and committer timestamps
+2023-03-08,record timezone interpretation
+2023-03-08,inspect contribution date attribution
+2023-05-08,note repository branch requirements
+2023-05-08,record synthetic-history experiment
+2023-08-11,compare commit display dates
+2023-08-11,note inactive-period boundary
+2023-08-11,document author-date behavior
+2023-08-11,compare author and committer timestamps
+2023-11-08,compare author and committer timestamps
+2023-11-08,record timezone interpretation
+2024-02-08,record timezone interpretation
+2024-02-08,inspect contribution date attribution
+2024-04-08,note repository branch requirements
+2024-04-08,record synthetic-history experiment
+2024-06-08,document graph refresh behavior
+2024-06-08,compare commit display dates
+2024-09-08,document author-date behavior
+2024-09-21,compare author and committer timestamps
+2024-12-11,inspect contribution date attribution
+2024-12-11,note repository branch requirements
+2024-12-11,record synthetic-history experiment
+2024-12-11,document graph refresh behavior
+2025-01-08,record timezone interpretation
+2025-01-08,inspect contribution date attribution
+2025-03-08,note repository branch requirements
+2025-03-08,record synthetic-history experiment
+2025-05-08,document graph refresh behavior
+2025-05-08,compare commit display dates
+2025-07-08,note inactive-period boundary
+2025-07-08,document author-date behavior
+2025-09-08,compare author and committer timestamps
+2025-09-08,record timezone interpretation
+2025-11-08,inspect contribution date attribution
+2025-11-08,note repository branch requirements
+2025-12-08,note repository branch requirements
+2025-12-21,record synthetic-history experiment
+2026-01-08,inspect contribution date attribution
+2026-01-21,note repository branch requirements
+2026-03-08,record synthetic-history experiment
+2026-03-21,document graph refresh behavior
+2026-06-08,note inactive-period boundary
+2026-06-08,document author-date behavior
+2026-09-11,record timezone interpretation
+2026-09-11,inspect contribution date attribution
+2026-09-11,note repository branch requirements
+2026-09-11,record synthetic-history experiment
+2026-11-02,record experiment end-date boundary
+2026-11-02,normalize experimental activity log line endings

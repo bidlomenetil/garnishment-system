@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.db
+*.sqlite3
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+*.egg-info/
+.DS_Store
+
+# Internal planning, review and orchestration artifacts (not part of the deliverable)
+.omc/
+
+# eval reports (may contain live-run diagnostics)
+evals/report*.txt
+report*.txt

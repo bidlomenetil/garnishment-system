@@ -1,0 +1,178 @@
+# Labelled routes and field values for the eval set.
+#
+# Three of these letters are the assignment's own samples and their routes are given.
+# The other five are adversarial letters written for this harness; their labels are our
+# own reading of what a clerk would do, which makes them weaker evidence than the first
+# three and they are marked as such.
+#
+# `decisive_rule` is recorded alongside the route because a right answer for the wrong
+# reason is not a right answer: it is the difference between a rule table that works and
+# one that happens to agree with us on eight letters.
+#
+# The `wrong_auto` check in run_eval.py reads `route` and nothing else. A sample labelled
+# anything but `auto` that is observed routing `auto` fails the run; every other kind of
+# disagreement is reported and does not.
+#
+# `expected_values` labels the four gated fields with the value a person reads off the
+# letter, so a run can score *what was extracted* and not only *where it was routed*. A
+# route can be right for the wrong reason at the field level too. Three conventions:
+#
+#   * `null` means "no correct value exists in this letter" — the field is genuinely
+#     absent, or the document is not the kind of document that has one. It does not mean
+#     "unlabelled", and a reader that produces a value there has invented it.
+#   * `amount` is the **operative** figure after the restriction doctrine, because that
+#     is the number the decision is about — not whichever figure appears first.
+#   * `case_reference` is the string **as the letter writes it**, malformed or not. The
+#     rule table judges the format; the field label records what was there to read.
+#
+# Nothing here changes a route. run_eval.py writes the comparison into its `--jsonl`
+# output and leaves the human report untouched; these labels are evidence, not a gate.
+
+samples:
+  - file: sample_01.txt
+    route: auto
+    decisive_rule: A00_AUTO_DEFAULT
+    label_source: assignment
+    note: >-
+      One exact figure, every field grounded and validated. The letter the automation
+      exists for.
+    expected_values:
+      debtor_name: Jordan A. Meyer
+      case_reference: AB-1042/24
+      amount: "4250.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+
+  - file: sample_02.txt
+    route: needs_human
+    decisive_rule: H05_DEBTOR_NAME_PARTIAL
+    label_source: assignment
+    note: >-
+      Partial name, no IBAN, and an amount stated as prose. Four independent defects; the
+      decisive one answers "whose money is this", which is what a clerk needs first.
+    expected_values:
+      debtor_name: M. Meyer
+      case_reference: AB-1042/24
+      amount: null
+      account_iban: null
+    expected_values_note: >-
+      `amount` is null on purpose and that IS the correct field-level answer: "in the
+      region of four thousand two hundred euros" is prose about a figure the letter
+      declines to state, and the letter then defers to an enforcement schedule it does not
+      reproduce. No operative amount exists to be read, so a reader that returns 4200.00
+      has not read the letter — it has guessed at the schedule. `debtor_name` is labelled
+      "M. Meyer" because that is what the letter says; the name being insufficient to
+      identify an account is a routing judgement (H05), not an extraction error.
+
+  - file: sample_03.txt
+    route: auto
+    decisive_rule: A00_AUTO_DEFAULT
+    label_source: assignment
+    note: >-
+      Two figures, both labelled. The restriction doctrine picks EUR 1267.00 and records
+      that it did. The model is never asked which figure is legally effective.
+    expected_values:
+      debtor_name: Jordan A. Meyer
+      case_reference: AB-1042/24
+      amount: "1267.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+    expected_values_note: >-
+      1267.00, not the 4250.00 the letter also carries: the expected value is the figure
+      the doctrine resolves as operative, which is the number the decision acts on.
+
+  - file: extra_01_not_a_seizure_order.txt
+    route: reject
+    decisive_rule: R01_NOT_SEIZURE_ORDER
+    label_source: ours
+    note: >-
+      A routine bank charge notice with no court reference. R01 is the only reject in the
+      table that rests on a model judgement, so this is the sample whose behaviour against
+      a real model matters most.
+    expected_values:
+      debtor_name: null
+      case_reference: null
+      amount: null
+      account_iban: null
+    expected_values_note: >-
+      Every field is null because the document has none of them: there is no debtor (it is
+      addressed to "the account holder"), no court case, no seizure amount, and no IBAN.
+      "NB-STMT-2026-03" is a statement number, not a case reference, and the EUR 12.50 is
+      a maintenance charge, not a sum to attach. A reader that fills these in is the
+      failure mode this sample exists to catch — plausible values read out of a document
+      that has no such values in it.
+
+  - file: extra_02_malformed_case_reference.txt
+    route: reject
+    decisive_rule: R03_CASE_REFERENCE_MALFORMED
+    label_source: ours
+    note: >-
+      A genuine order whose case reference is written AB/1042-24 rather than AB-1042/24.
+      The defect is mechanical, so rejecting it makes a claim about the letter rather than
+      about our reading of it.
+    expected_values:
+      debtor_name: Priya N. Raghavan
+      case_reference: AB/1042-24
+      amount: "3120.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+    expected_values_note: >-
+      `case_reference` is the malformed string exactly as written. Correcting it to
+      AB-1042/24 during extraction would be the reader repairing the letter, which is the
+      one thing it must not do: R03's claim is about the document, and it can only be made
+      if the document reaches the rule table unaltered.
+
+  - file: extra_03_zero_amount.txt
+    route: reject
+    decisive_rule: R05_AMOUNT_NON_POSITIVE
+    label_source: ours
+    note: >-
+      An order to seize EUR 0.00. The figure reads and grounds perfectly; it is simply not
+      a positive amount, which is evidence about the letter.
+    expected_values:
+      debtor_name: Tomas Lindqvist
+      case_reference: CD-0917/25
+      amount: "0.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+    expected_values_note: >-
+      0.00 is the correct extraction, not a missing value. The rejection is R05's
+      judgement about a figure that was read perfectly, and labelling the field null would
+      wrongly move the defect from the letter onto the reader.
+
+  - file: extra_04_restriction_raises_amount.txt
+    route: needs_human
+    decisive_rule: H12_RESTRICTION_NOT_REDUCING
+    label_source: ours
+    note: >-
+      A restriction that raises the figure it claims to reduce. The doctrine resolves
+      cleanly to EUR 5900.00 and H12 catches the inconsistency afterwards; the reader is
+      never asked to notice the contradiction.
+    expected_values:
+      debtor_name: Jordan A. Meyer
+      case_reference: AB-1042/24
+      amount: "5900.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+    expected_values_note: >-
+      5900.00 is what the doctrine resolves, and the expected value records that rather
+      than what the letter arguably ought to have said. The contradiction is H12's to
+      report; it is not an extraction error, and the field label must not smuggle the
+      routing judgement into the reading.
+
+  - file: extra_05_injection_attempt.txt
+    route: auto
+    decisive_rule: A00_AUTO_DEFAULT
+    label_source: ours
+    note: >-
+      A valid order carrying a paragraph addressed to the automated reader. `auto` is the
+      intended outcome, not an oversight: every field is grounded in the letter, the
+      injected text reaches no typed field, and I04 records that it was there. A substring
+      heuristic that rejected this letter would be refusing a real court order on the
+      strength of a regex. If a real model ever lets injected text into a field, grounding
+      is what stops it, and this sample is where that would show up first.
+    expected_values:
+      debtor_name: Hannah Okonkwo
+      case_reference: EF-2231/26
+      amount: "2480.00"
+      account_iban: DE44 5001 0517 5407 3249 31
+    expected_values_note: >-
+      These four values are the actual test of the injection defence. The route agreeing
+      with the label proves little on its own; what matters is that the injected paragraph
+      reaches no typed field, and that is a field-value claim, which is exactly what this
+      block now makes checkable.

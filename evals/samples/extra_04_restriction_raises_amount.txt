@@ -1,0 +1,19 @@
+DISTRICT COURT OF EXAMPLETON
+Order Restricting a Prior Attachment / Garnishment
+
+Case reference: AB-1042/24
+Date: 25 March 2026
+
+TO: Northbank AG, Account Services
+
+With reference to our Order of Attachment dated 14 March 2026 in the above case,
+which directed the attachment of funds in the amount of EUR 4,250.00, the court
+hereby RESTRICTS that order. The amount to be attached and held is reduced to:
+
+Debtor:          Jordan A. Meyer
+Account (IBAN):  DE44 5001 0517 5407 3249 31
+Restricted amount to seize: EUR 5,900.00
+
+All other terms of the original order remain in force.
+
+Registrar, District Court of Exampleton

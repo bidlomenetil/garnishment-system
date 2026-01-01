@@ -1,0 +1,63 @@
+[project]
+name = "garnishment"
+version = "0.1.0"
+description = "Garnishment letter extraction-to-decision boundary service"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "uvicorn[standard]",
+    "pydantic>=2.9,<3",
+    "pydantic-settings>=2.5,<3",
+    "sqlalchemy[asyncio]>=2.0.35,<2.1",
+    "aiosqlite",
+    "anthropic",
+    "openai>=3.17,<4",
+    "python-ulid",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "httpx>=0.27",
+    "hypothesis>=6.112",
+    "ruff>=0.7",
+    "mypy>=1.12",
+    "pyyaml>=6.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "live: requires a real LLM provider API key; excluded from `make test`",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+
+[[tool.mypy.overrides]]
+module = "garnishment.domain.*"
+strict = true
+
+[[tool.mypy.overrides]]
+module = "garnishment.application.*"
+strict = true
+
+[tool.coverage.run]
+source = ["src/garnishment"]

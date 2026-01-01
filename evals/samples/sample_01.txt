@@ -1,0 +1,19 @@
+DISTRICT COURT OF EXAMPLETON
+Order of Attachment / Garnishment
+
+Case reference: AB-1042/24
+Date: 14 March 2026
+
+TO: Northbank AG, Account Services
+
+You are hereby ordered to attach and hold funds in the account of the debtor named
+below, up to the amount stated, pursuant to the enforcement order in the
+above-referenced case.
+
+Debtor:        Jordan A. Meyer
+Account (IBAN): DE44 5001 0517 5407 3249 31
+Amount to seize: EUR 4,250.00
+
+This order takes effect immediately upon receipt.
+
+Registrar, District Court of Exampleton

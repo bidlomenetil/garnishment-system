@@ -1,0 +1,19 @@
+DISTRICT COURT OF EXAMPLETON
+Order of Attachment / Garnishment
+
+Case reference: CD-0917/25
+Date: 21 March 2026
+
+TO: Northbank AG, Account Services
+
+You are hereby ordered to attach and hold funds in the account of the debtor named
+below, up to the amount stated.
+
+Debtor:        Tomas Lindqvist
+Account (IBAN): DE44 5001 0517 5407 3249 31
+Amount to seize: EUR 0.00
+
+The registry notes that the enforcement schedule in this matter has been settled in
+full; the figure above is reproduced as it stands on that schedule.
+
+Registrar, District Court of Exampleton
